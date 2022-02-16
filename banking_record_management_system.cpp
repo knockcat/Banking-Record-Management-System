@@ -5,7 +5,8 @@
 #include <iomanip>
 #include <fstream>
 #include <cctype>
-#include "File.h" // contains definition of Files
+#include "File.h"  // contains definition of Files
+#include "Intro.h" // contains defintion for introduction menu
 
 using namespace std;
 

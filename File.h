@@ -200,34 +200,3 @@ void deposit_withdraw(int n, int option)
     if (found == false)
         cout << "\n\nRecord Not FOund";
 }
-
-// defintion for introduction menu
-void intro()
-{
-    cout << "\n\n\n\n";
-    cout << "\t\t\t===================================================================\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====		     \tBANKING					===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====	    	\tRECORD					===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====		     \tMANAGEMENT				===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====		    \tSYSTEM					===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====		        By			   		===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====								===\n";
-    cout << "\t\t\t====			VISHAL JOSHI				===\n";
-    cout << "\t\t\t===================================================================\n";
-
-    cin.get();
-}
