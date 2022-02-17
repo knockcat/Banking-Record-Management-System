@@ -3,6 +3,7 @@
 #include <iostream>
 #include <conio.h>
 #include <ctime>
+#include "Password.h" // password details
 using namespace std;
 
 void TIME()
