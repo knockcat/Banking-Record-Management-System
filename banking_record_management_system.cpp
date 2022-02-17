@@ -12,11 +12,11 @@ using namespace std;
 
 int main()
 {
-	system("color E9"); // to change foreground color to blue and baclground color to yellow
 	char ch;
 	int num;
 
 	intro();
+	system("color 90"); // to change foreground color to blue and baclground color to yellow
 	do
 	{
 		system("cls");
@@ -77,7 +77,9 @@ int main()
 			break;
 
 		case '8':
-			cout << "\n\n\tThanks for Visiting our portfolio\n";
+			system("color E9");
+			End();
+			cout << "\n\n\t\t\t\t\t\tThanks for Visiting our portfolio\n";
 			break;
 		default:
 			cout << "\nEnter Valid option\n ";
