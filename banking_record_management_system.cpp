@@ -21,7 +21,17 @@ int main()
 	{
 		system("cls");
 
-		ch = menu(); // get the choice
+		cout << "\n\n\n\tMAIN MENU";
+		cout << "\n\n\t01. CREATE ACCOUNT";
+		cout << "\n\n\t02. DEPOSIT MONEY TO AN ACCOUNT";
+		cout << "\n\n\t03. WITHDRAW MONEY FROM AN ACCOUNT";
+		cout << "\n\n\t04. BALANCE ENQUIRY OF AN ACCOUNT";
+		cout << "\n\n\t05. ALL ACCOUNT HOLDER LIST FROM BANK DATABASE";
+		cout << "\n\n\t06. CLOSE AN ACCOUNT";
+		cout << "\n\n\t07. MODIFY AN ACCOUNT";
+		cout << "\n\n\t08. EXIT";
+		cout << "\n\n\tSelect Your Option (1-8) ";
+		cin >> ch;
 
 		system("cls");
 
@@ -50,7 +60,9 @@ int main()
 			break;
 
 		case '5':
-			PassWord();
+			if (PassWord()) // if password goes wrong 3 times , return to main menu
+				break;
+
 			display_all();
 			break;
 
