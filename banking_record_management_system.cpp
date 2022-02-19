@@ -308,7 +308,7 @@ void delete_account(int n)
 	infile.close();
 	outfile.close();
 	remove("knockcat.dat");
-	rename("Temp.dat","knokcat.dat");
+	rename("Temp.dat","knockcat.dat");
 	
 	cout<<"\n\n\tRecord Deleted ..";
 }
