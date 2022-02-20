@@ -1,5 +1,14 @@
 // Contains Defiition of Files
 
+// reinterpret_cast is a type of casting operator used in C++
+// It is used to convert a pointer of some data type into a pointer of another data type,
+// even if the the data types before and after conversion are different.
+// It does not check if the pointer type and data pointed by the pointer is same or not.
+
+// Static Cast: This is the simplest type of cast which can be used. It is a compile time cast.
+// It does things like implicit conversions between types (such as int to float, or pointer to void*),
+// and it can also call explicit conversion functions (or implicit ones).
+
 #include "MemeberFunctions.h" //Defintion of  Member Functions and Class
 #include <fstream>
 #include <iostream>
@@ -14,13 +23,16 @@ void deposit_withdraw(int, int); // function to deposit/withdraw amount for give
 void intro();                    // Introductory Screen
 
 // defintion of writing record to file
+// Here data present in class object acc is written to file knockcat.txt by calling write function.
+// (char*)&acc is used to point at the start of an object and sizeof(account) calculates the number of bytes copied in file.
 void write_account()
 {
-    Account acc;
-    ofstream outfile;
+    Account acc;      // class object
+    ofstream outfile; // represents output file stream and writes information to files.
     outfile.open("knockcat.dat", ios::binary | ios::app);
     acc.create_account();
     outfile.write(reinterpret_cast<char *>(&acc), sizeof(Account));
+
     outfile.close();
 }
 
@@ -29,7 +41,7 @@ void display_sp(int n)
 {
     Account acc;
     bool flag = 0;
-    ifstream infile;
+    ifstream infile; // represents input file stream and reads information from files.
 
     infile.open("knockcat.dat", ios::binary);
     if (!infile)
@@ -59,7 +71,7 @@ void modify_account(int n)
 {
     bool found = false;
     Account acc;
-    fstream vj;
+    fstream vj; // represents general file stream and has capabilities of both read & write.
     vj.open("knockcat.dat", ios::binary | ios::in | ios::out);
 
     if (!vj)
@@ -76,8 +88,10 @@ void modify_account(int n)
             acc.show_account();
             cout << "\nEnter the New Details of the Account " << endl;
             acc.modify();
-            int pos = (-1) * static_cast<int>(sizeof(Account)); //
-            vj.seekp(pos, ios::cur);
+            //(-1)*static_cast<int>(sizeof(acc)); turns the unsigned result of the sizeof operator into a signed number, and multiplies it by -1.
+            int pos = (-1) * static_cast<int>(sizeof(Account));
+            // The seekp(pos) method of ostream in C++ is used to set the position of the pointer in the output sequence with the specified position
+            vj.seekp(pos, ios::cur); // for moving pointer from curr position
             vj.write(reinterpret_cast<char *>(&acc), sizeof(Account));
 
             cout << "\n\n\t Record Updated";
@@ -93,8 +107,8 @@ void modify_account(int n)
 void delete_account(int n)
 {
     Account acc;
-    ifstream infile;
-    ofstream outfile;
+    ifstream infile;  // represents input file stream and reads information from files.
+    ofstream outfile; // represents output file stream and writes information to files.
     infile.open("knockcat.dat", ios::binary);
     if (!infile)
     {
@@ -103,7 +117,8 @@ void delete_account(int n)
     }
 
     outfile.open("Temp.dat", ios::binary);
-    infile.seekg(0, ios::beg);
+    // seekg() is a function in the iostream library that allows you to seek an arbitrary position in a file.
+    infile.seekg(0, ios::beg); // offset from the beginning of the stream’s buffer.
 
     while (infile.read(reinterpret_cast<char *>(&acc), sizeof(Account)))
     {
@@ -115,8 +130,8 @@ void delete_account(int n)
 
     infile.close();
     outfile.close();
-    remove("knockcat.dat");
-    rename("Temp.dat", "knockcat.dat");
+    remove("knockcat.dat");             // Delete a File from Current Directory
+    rename("Temp.dat", "knockcat.dat"); // Changes the name of the file or directory specified by oldname to newname.
 
     cout << "\n\n\tRecord Deleted ..";
 }
@@ -125,7 +140,7 @@ void delete_account(int n)
 void display_all()
 {
     Account acc;
-    ifstream infile;
+    ifstream infile; // represents input file stream and reads information from files.
     infile.open("knockcat.dat", ios::binary);
     if (!infile)
     {
@@ -152,7 +167,7 @@ void deposit_withdraw(int n, int option)
     int amt;
     bool found = false;
     Account acc;
-    fstream vj;
+    fstream vj; // represents general file stream and has capabilities of both read & write.
     vj.open("knockcat.dat", ios::binary | ios::in | ios::out);
     if (!vj)
     {
