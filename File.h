@@ -20,7 +20,7 @@ void write_account()
     ofstream outfile;
     outfile.open("knockcat.dat", ios::binary | ios::app);
     acc.create_account();
-    outfile.write(reinterpret_cast<char *>(&acc), sizeof(Account));
+    outfile.write((char*)(&acc), sizeof(Account));
     outfile.close();
 }
 
@@ -40,7 +40,7 @@ void display_sp(int n)
 
     cout << "\nBALANCE DETAILS\n";
 
-    while (infile.read(reinterpret_cast<char *>(&acc), sizeof(Account)))
+    while (infile.read((char*)(&acc), sizeof(Account)))
     {
         if (acc.retaccno() == n)
         {
@@ -70,7 +70,7 @@ void modify_account(int n)
 
     while (!vj.eof() && found == false)
     {
-        vj.read(reinterpret_cast<char *>(&acc), sizeof(Account));
+        vj.read((char*)(&acc), sizeof(Account));
         if (acc.retaccno() == n)
         {
             acc.show_account();
@@ -78,7 +78,7 @@ void modify_account(int n)
             acc.modify();
             int pos = (-1) * static_cast<int>(sizeof(Account)); //
             vj.seekp(pos, ios::cur);
-            vj.write(reinterpret_cast<char *>(&acc), sizeof(Account));
+            vj.write((char*)(&acc), sizeof(Account));
 
             cout << "\n\n\t Record Updated";
             found = true;
@@ -105,11 +105,11 @@ void delete_account(int n)
     outfile.open("Temp.dat", ios::binary);
     infile.seekg(0, ios::beg);
 
-    while (infile.read(reinterpret_cast<char *>(&acc), sizeof(Account)))
+    while (infile.read((char*)(&acc), sizeof(Account)))
     {
         if (acc.retaccno() != n)
         {
-            outfile.write(reinterpret_cast<char *>(&acc), sizeof(Account));
+            outfile.write((char*)(&acc), sizeof(Account));
         }
     }
 
@@ -162,7 +162,7 @@ void deposit_withdraw(int n, int option)
 
     while (!vj.eof() && found == false)
     {
-        vj.read(reinterpret_cast<char *>(&acc), sizeof(Account));
+        vj.read((char*)(&acc), sizeof(Account));
         if (acc.retaccno() == n)
         {
             acc.show_account();
@@ -190,7 +190,7 @@ void deposit_withdraw(int n, int option)
 
             int pos = (-1) * static_cast<int>(sizeof(acc));
             vj.seekp(pos, ios::cur);
-            vj.write(reinterpret_cast<char *>(&acc), sizeof(Account));
+            vj.write((char*)(&acc), sizeof(Account));
             cout << "\n\nRecord Updated ";
             found = true;
         }
