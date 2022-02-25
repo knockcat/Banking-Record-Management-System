@@ -26,7 +26,7 @@ void write_account()
     ofstream outfile; // represents output file stream and writes information to files.
     outfile.open("knockcat.dat", ios::binary | ios::app);
     acc.create_account();
-    outfile.write((char*)(&acc), sizeof(Account));
+    outfile.write((char *)(&acc), sizeof(Account));
 
     outfile.close();
 }
@@ -47,7 +47,7 @@ void display_sp(int n)
 
     cout << "\nBALANCE DETAILS\n";
 
-    while (infile.read((char*)(&acc), sizeof(Account)))
+    while (infile.read((char *)(&acc), sizeof(Account)))
     {
         if (acc.retaccno() == n)
         {
@@ -77,7 +77,7 @@ void modify_account(int n)
 
     while (!vj.eof() && found == false)
     {
-        vj.read((char*)(&acc), sizeof(Account));
+        vj.read((char *)(&acc), sizeof(Account));
         if (acc.retaccno() == n)
         {
             acc.show_account();
@@ -87,7 +87,7 @@ void modify_account(int n)
             int pos = (-1) * static_cast<int>(sizeof(Account));
             // The seekp(pos) method of ostream in C++ is used to set the position of the pointer in the output sequence with the specified position
             vj.seekp(pos, ios::cur); // for moving pointer from curr position
-            vj.write((char*)(&acc), sizeof(Account));
+            vj.write((char *)(&acc), sizeof(Account));
 
             cout << "\n\n\t Record Updated";
             found = true;
@@ -115,11 +115,11 @@ void delete_account(int n)
     // seekg() is a function in the iostream library that allows you to seek an arbitrary position in a file.
     infile.seekg(0, ios::beg); // offset from the beginning of the stream’s buffer.
 
-    while (infile.read((char*)(&acc), sizeof(Account)))
+    while (infile.read((char *)(&acc), sizeof(Account)))
     {
         if (acc.retaccno() != n)
         {
-            outfile.write((char*)(&acc), sizeof(Account));
+            outfile.write((char *)(&acc), sizeof(Account));
         }
     }
 
@@ -151,8 +151,8 @@ void display_all()
     while (infile.read((char *)(&acc), sizeof(Account)))
     {
         acc.report();
+        cout << endl;
     }
-
     infile.close();
 }
 
@@ -172,7 +172,7 @@ void deposit_withdraw(int n, int option)
 
     while (!vj.eof() && found == false)
     {
-        vj.read((char*)(&acc), sizeof(Account));
+        vj.read((char *)(&acc), sizeof(Account));
         if (acc.retaccno() == n)
         {
             acc.show_account();
@@ -200,7 +200,7 @@ void deposit_withdraw(int n, int option)
 
             int pos = (-1) * static_cast<int>(sizeof(acc));
             vj.seekp(pos, ios::cur);
-            vj.write((char*)(&acc), sizeof(Account));
+            vj.write((char *)(&acc), sizeof(Account));
             cout << "\n\nRecord Updated ";
             found = true;
         }

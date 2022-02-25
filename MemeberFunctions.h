@@ -62,7 +62,11 @@ void Account ::draw(int x)
 // defintion of report func
 void Account ::report()
 {
-    cout << acc_no << setw(20) << " " << name << setw(15) << " " << type << setw(17) << deposit << endl;
+    // cout << acc_no << setw(20) << " " << name << setw(15) << " " << type << setw(17) << deposit << endl;
+    cout << setw(2) << setfill(' ') << acc_no;
+    cout << setw(25) << setfill(' ') << name;
+    cout << setw(14) << setfill(' ') << type;
+    cout << setw(20) << setfill(' ') << deposit;
 }
 
 // definition of retaccno
