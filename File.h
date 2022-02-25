@@ -1,10 +1,5 @@
 // Contains Defiition of Files
 
-// reinterpret_cast is a type of casting operator used in C++
-// It is used to convert a pointer of some data type into a pointer of another data type,
-// even if the the data types before and after conversion are different.
-// It does not check if the pointer type and data pointed by the pointer is same or not.
-
 // Static Cast: This is the simplest type of cast which can be used. It is a compile time cast.
 // It does things like implicit conversions between types (such as int to float, or pointer to void*),
 // and it can also call explicit conversion functions (or implicit ones).
@@ -31,7 +26,7 @@ void write_account()
     ofstream outfile; // represents output file stream and writes information to files.
     outfile.open("knockcat.dat", ios::binary | ios::app);
     acc.create_account();
-    outfile.write(reinterpret_cast<char *>(&acc), sizeof(Account));
+    outfile.write((char*)(&acc), sizeof(Account));
 
     outfile.close();
 }
@@ -52,7 +47,7 @@ void display_sp(int n)
 
     cout << "\nBALANCE DETAILS\n";
 
-    while (infile.read(reinterpret_cast<char *>(&acc), sizeof(Account)))
+    while (infile.read((char*)(&acc), sizeof(Account)))
     {
         if (acc.retaccno() == n)
         {
@@ -82,7 +77,7 @@ void modify_account(int n)
 
     while (!vj.eof() && found == false)
     {
-        vj.read(reinterpret_cast<char *>(&acc), sizeof(Account));
+        vj.read((char*)(&acc), sizeof(Account));
         if (acc.retaccno() == n)
         {
             acc.show_account();
@@ -92,7 +87,7 @@ void modify_account(int n)
             int pos = (-1) * static_cast<int>(sizeof(Account));
             // The seekp(pos) method of ostream in C++ is used to set the position of the pointer in the output sequence with the specified position
             vj.seekp(pos, ios::cur); // for moving pointer from curr position
-            vj.write(reinterpret_cast<char *>(&acc), sizeof(Account));
+            vj.write((char*)(&acc), sizeof(Account));
 
             cout << "\n\n\t Record Updated";
             found = true;
@@ -120,11 +115,11 @@ void delete_account(int n)
     // seekg() is a function in the iostream library that allows you to seek an arbitrary position in a file.
     infile.seekg(0, ios::beg); // offset from the beginning of the stream’s buffer.
 
-    while (infile.read(reinterpret_cast<char *>(&acc), sizeof(Account)))
+    while (infile.read((char*)(&acc), sizeof(Account)))
     {
         if (acc.retaccno() != n)
         {
-            outfile.write(reinterpret_cast<char *>(&acc), sizeof(Account));
+            outfile.write((char*)(&acc), sizeof(Account));
         }
     }
 
@@ -177,7 +172,7 @@ void deposit_withdraw(int n, int option)
 
     while (!vj.eof() && found == false)
     {
-        vj.read(reinterpret_cast<char *>(&acc), sizeof(Account));
+        vj.read((char*)(&acc), sizeof(Account));
         if (acc.retaccno() == n)
         {
             acc.show_account();
@@ -205,7 +200,7 @@ void deposit_withdraw(int n, int option)
 
             int pos = (-1) * static_cast<int>(sizeof(acc));
             vj.seekp(pos, ios::cur);
-            vj.write(reinterpret_cast<char *>(&acc), sizeof(Account));
+            vj.write((char*)(&acc), sizeof(Account));
             cout << "\n\nRecord Updated ";
             found = true;
         }
