@@ -31,12 +31,7 @@ void write_account()
     ofstream outfile; // represents output file stream and writes information to files.
     outfile.open("knockcat.dat", ios::binary | ios::app);
     acc.create_account();
-<<<<<<< HEAD
     outfile.write((char*)(&acc), sizeof(Account));
-=======
-    outfile.write(reinterpret_cast<char *>(&acc), sizeof(Account));
-
->>>>>>> update
     outfile.close();
 }
 
@@ -92,17 +87,9 @@ void modify_account(int n)
             acc.show_account();
             cout << "\nEnter the New Details of the Account " << endl;
             acc.modify();
-<<<<<<< HEAD
             int pos = (-1) * static_cast<int>(sizeof(Account)); //
             vj.seekp(pos, ios::cur);
             vj.write((char*)(&acc), sizeof(Account));
-=======
-            //(-1)*static_cast<int>(sizeof(acc)); turns the unsigned result of the sizeof operator into a signed number, and multiplies it by -1.
-            int pos = (-1) * static_cast<int>(sizeof(Account));
-            // The seekp(pos) method of ostream in C++ is used to set the position of the pointer in the output sequence with the specified position
-            vj.seekp(pos, ios::cur); // for moving pointer from curr position
-            vj.write(reinterpret_cast<char *>(&acc), sizeof(Account));
->>>>>>> update
 
             cout << "\n\n\t Record Updated";
             found = true;
