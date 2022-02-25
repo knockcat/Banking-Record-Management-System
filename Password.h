@@ -13,6 +13,8 @@ int PassWord()
         string user;
         string pass;
 
+        system("cls");
+
         cout << "\t\t###################################     Verify YourSelf     ###################################" << endl;
 
         cout << "\n\nEnter Username : ";
