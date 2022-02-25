@@ -67,12 +67,16 @@ int main()
 			break;
 
 		case '6':
+			if (PassWord()) // if password goes wrong 3 times , return to main menu
+				break;
 			cout << "Enter The account No. : ";
 			cin >> num;
 			delete_account(num);
 			break;
 
 		case '7':
+			if (PassWord()) // if password goes wrong 3 times , return to main menu
+				break;
 			cout << "\n\nEnter The account No. :";
 			cin >> num;
 			modify_account(num);
