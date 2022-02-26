@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <fstream>
 #include <cctype>
+#include "Diff.h"
 #include "File.h"  // contains definition of Files
 #include "Intro.h" // contains defintion for introduction menu
 
@@ -15,8 +16,13 @@ int main()
 	char ch;
 	int num;
 
+	Bank();
+	getch();
+
+	system("cls");
+
 	intro();
-	system("color 90"); // to change foreground color to blue and baclground color to yellow
+	system("color 90"); // to change foreground color to blue and background color to yellow
 	do
 	{
 		system("cls");
@@ -27,8 +33,8 @@ int main()
 		cout << "\n\n\t03. WITHDRAW MONEY FROM AN ACCOUNT";
 		cout << "\n\n\t04. BALANCE ENQUIRY OF AN ACCOUNT";
 		cout << "\n\n\t05. ALL ACCOUNT HOLDER LIST FROM BANK DATABASE";
-		cout << "\n\n\t06. CLOSE AN ACCOUNT";
-		cout << "\n\n\t07. MODIFY AN ACCOUNT";
+		cout << "\n\n\t06. MODIFY AN ACCOUNT";
+		cout << "\n\n\t07. CLOSE AN ACCOUNT";
 		cout << "\n\n\t08. EXIT";
 		cout << "\n\n\tSelect Your Option (1-8) ";
 		cin >> ch;
@@ -69,23 +75,25 @@ int main()
 		case '6':
 			if (PassWord()) // if password goes wrong 3 times , return to main menu
 				break;
-			cout << "Enter The account No. : ";
+			cout << "\n\n\n\nEnter The account No. :";
 			cin >> num;
-			delete_account(num);
+			modify_account(num);
 			break;
 
 		case '7':
 			if (PassWord()) // if password goes wrong 3 times , return to main menu
 				break;
-			cout << "\n\nEnter The account No. :";
+			cout << "\n\n\n\nEnter The account No. : ";
 			cin >> num;
-			modify_account(num);
+			delete_account(num);
 			break;
 
 		case '8':
 			system("color E9");
 			End();
-			cout << "\n\n\t\t\t\t\t\tThanks for Visiting our portfolio\n";
+			cout << "\n\n\t\t\t\t\t\tThanks for Visiting our portfolio\n\n\n";
+			system("cls");
+			thank();
 			break;
 		default:
 			cout << "\nEnter Valid option\n ";

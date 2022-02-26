@@ -49,9 +49,16 @@ void write_account()
         outfile.open("knockcat.dat", ios::binary | ios::app);
         outfile.write((char *)(&unacc), sizeof(Account));
         cout << "\n\nAccount Created.........";
+        Thankyou();
     }
     else
-        cout << "\n\nAccount number already Exist !!!" << endl;
+    {
+        cout << "\n\nAccount number already Exist !!!" << endl
+             << endl
+             << endl
+             << endl;
+        Error();
+    }
 
     outfile.close();
 }
@@ -153,7 +160,7 @@ void delete_account(int n)
     remove("knockcat.dat");             // Delete a File from Current Directory
     rename("Temp.dat", "knockcat.dat"); // Changes the name of the file or directory specified by oldname to newname.
 
-    cout << "\n\n\tRecord Deleted ..";
+    cout << "\n\n\n\n\tRecord Deleted ..";
 }
 
 // definition for displaying all records from a file
