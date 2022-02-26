@@ -5,6 +5,8 @@
 #include <iomanip>
 using namespace std;
 
+int Unique = 0;
+
 // defintion of create account
 void Account ::create_account()
 {
@@ -20,7 +22,9 @@ void Account ::create_account()
     cout << "\nEnter the Initial amount (greater than 500 for Saving and greater than 1000 for current) : ";
     cin >> deposit;
 
-    cout << "\n\nAccount Created.........";
+    Unique = acc_no;
+
+    // cout << "\n\nAccount Created.........";
 }
 
 // defintion of show account

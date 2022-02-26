@@ -22,11 +22,36 @@ void intro();                    // Introductory Screen
 // (char*)&acc is used to point at the start of an object and sizeof(account) calculates the number of bytes copied in file.
 void write_account()
 {
-    Account acc;      // class object
+    Account acc;   // class object
+    Account unacc; // for handling unique case
+    bool k = false;
+
     ofstream outfile; // represents output file stream and writes information to files.
-    outfile.open("knockcat.dat", ios::binary | ios::app);
-    acc.create_account();
-    outfile.write((char *)(&acc), sizeof(Account));
+    ifstream infile;
+
+    unacc.create_account();
+
+    infile.open("knockcat.dat", ios::binary | ios::in);
+
+    while (infile.read((char *)(&acc), sizeof(Account)))
+    {
+        if (acc.retaccno() == Unique)
+        {
+            k = true;
+            Unique = 0;
+        }
+    }
+
+    infile.close();
+
+    if (!k)
+    {
+        outfile.open("knockcat.dat", ios::binary | ios::app);
+        outfile.write((char *)(&unacc), sizeof(Account));
+        cout << "\n\nAccount Created.........";
+    }
+    else
+        cout << "\n\nAccount number already Exist !!!" << endl;
 
     outfile.close();
 }
