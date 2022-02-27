@@ -9,7 +9,7 @@
 #include <iostream>
 using namespace std;
 
-void write_account();            // func to write record in bonary file
+void write_account();            // func to write record in binary file
 void display_sp(int);            // Func to display account details given by user
 void modify_account(int);        // function to modify record into a file
 void delete_account(int);        // function to delete record from a file
@@ -18,7 +18,7 @@ void deposit_withdraw(int, int); // function to deposit/withdraw amount for give
 void intro();                    // Introductory Screen
 
 // defintion of writing record to file
-// Here data present in class object acc is written to file knockcat.txt by calling write function.
+// Here data present in class object acc is written to file knockcat.dat by calling write function.
 // (char*)&acc is used to point at the start of an object and sizeof(account) calculates the number of bytes copied in file.
 void write_account()
 {

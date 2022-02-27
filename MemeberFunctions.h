@@ -13,12 +13,26 @@ void Account ::create_account()
     cout << "\nGreetings You are welcome to our Portfolio\n";
     cout << "\nEnter The Account Number : ";
     cin >> acc_no;
+    while (cin.fail())
+    // Not an int value
+    {
+        cout << "\nError !!! Account Number Should be a number type(int)" << endl;
+        cin.clear();
+        cin.ignore(256, '\n');
+        cin >> acc_no;
+    }
     cout << "\nEnter The Name of The Account Holder : ";
     cin.ignore();
     cin.getline(name, 50);
+
     cout << "\nEnter Type of The Account *Current or *Saving (C/S) : ";
     cin >> type;
+
+    if (type != 's' || type != 'S' || type != 'c' || type != 'C')
+        type = 'S';
     type = toupper(type);
+
+    cin.ignore();
     cout << "\nEnter the Initial amount (greater than 500 for Saving and greater than 1000 for current) : ";
     cin >> deposit;
 

@@ -1,11 +1,11 @@
-// Banking Record Management System (by vishal joshi)
+// Banking Record Management System (by VISHAL JOSHI)
 
 // header files used
 #include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <cctype>
-#include "Diff.h"
+#include <iomanip> // for functions setw(), setfill()
+#include <fstream> // for implementing files
+#include <cctype>  // for function toupper()
+#include "Diff.h"  // contains decorative functions
 #include "File.h"  // contains definition of Files
 #include "Intro.h" // contains defintion for introduction menu
 
